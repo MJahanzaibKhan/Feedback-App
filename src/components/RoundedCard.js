@@ -1,9 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 
 export default function RoundedCard({ children }) {
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
+
   return (
-    <View
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={keyboardVerticalOffset}
       style={{
         width: '85%',
         backgroundColor: 'rgba(255,255,255,0.9)',
@@ -13,6 +17,6 @@ export default function RoundedCard({ children }) {
       }}
     >
       {children}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
